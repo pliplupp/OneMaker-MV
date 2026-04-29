@@ -172,6 +172,9 @@ void _onemaker_initialize() {
 
     QString dest = QDir::currentPath();
     QString rccPath = dest + "/hijack.rcc";
+    #ifdef Q_OS_MAC
+    rccPath = "~/Library/Application Support/Steam/steamapps/common/RPG Maker MV/RPG Maker MV.app/Contents/MacOS";
+    #endif
     QTextStream(stdout) << "OneMaker MV: INFO: rccPath = " << rccPath << endl;
     if (QFile(rccPath).exists()) { // TODO: directory check
         QResource::registerResource(rccPath);
